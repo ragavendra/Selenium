@@ -13,7 +13,7 @@
  7.  The **Tests** folder have samples for integration tests. The **Pages** folder consists one page class file for each page.
 
 # Disclaimer
-***Please note the sample website used in this code has no relation to this repository and is an independent site. It is advised to update the website and the code(Pages and Tests) to match the website that you are trying to automate.***
+Please note the sample website used in this code has no relation to this repository and is an independent site. It is advised to update the website and the code(Pages and Tests) to match the website that you are trying to automate.
 
 # Getting Started
  Git clone the repo and open the solution file on your VS. I am not sure about other IDEs. 
@@ -27,8 +27,8 @@ In VS Tests--> Test Explorer shows the tests and can used to run or debug the te
 # Test strategy
 Different testers like to organize tests differently like having say Signup or Login parts as independent methods or functions. It is possible to achieving another layer above Tests to achieve this to obey the DRY principles.  
 
-#### Donations
-Please feel free to donate as this work is made possible with donations like yours. It involves years of efforts with money, time and efforts spent to obtain the college degree and experience gained to write quality software. PM for customizations and implementations.
+# Donations
+Please feel free to donate as this work is made possible with donations like yours. It involves years of efforts with money, time and efforts spent to obtain the college degree and experience gained to write quality software. Not to worry if the business says FashionJewelry as it is a common business. PM for customizations and implementations.
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZKRHDCLG22EJA)
 
