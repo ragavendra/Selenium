@@ -12,6 +12,9 @@
  6. Parallel/ multi thread test execution possible using nunit for faster test runs. Set *LevelOfParallelism* to say ideally 4 and play with parallel scope in **NUnitSettings** file.
  7.  The **Tests** folder have samples for integration tests. The **Pages** folder consists one page class file for each page.
 
+# Disclaimer
+***Please note the sample website used in this code has no relation to this repository and is an independent site. It is advised to update the website and the code(Pages and Tests) to match the website that you are trying to automate.***
+
 # Getting Started
  Git clone the repo and open the solution file on your VS. I am not sure about other IDEs. 
 1.	Installation process - Cloning the repo and opening the solution in MS Visual Studio 2021 using .NET 6.0 should be good enough. The below Nuget packages get installed as well when the solution is opened in VSTS and is documented only for showing the dependencies here.
@@ -20,6 +23,9 @@
 
 # Build and Test
 In VS Tests--> Test Explorer shows the tests and can used to run or debug the tests.
+
+# Test strategy
+Different testers like to organize tests differently like having say Signup or Login parts as independent methods or functions. It is possible to achieving another layer above Tests to achieve this to obey the DRY principles.  
 
 #### Donations
 Please feel free to donate as this work is made possible with donations like yours. It involves years of efforts with money, time and efforts spent to obtain the college degree and experience gained to write quality software. PM for customizations and implementations.
