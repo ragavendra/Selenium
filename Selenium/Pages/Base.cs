@@ -3,9 +3,9 @@
 
 namespace Selenium
 {
-    public abstract class Base
+    public abstract class Base : BaseInterface
     {
-        public IWebDriver driver;
+        //public IWebDriver driver;
 
         //menus go on this class
         public Base(IWebDriver driver)
@@ -22,5 +22,14 @@ namespace Selenium
 
         public IWebElement components => driver.FindElement(By.LinkText("Components"));
 
+        //interface code below
+        public string str { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
+        public IWebDriver driver { get; set; }
+
+        public void setup()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

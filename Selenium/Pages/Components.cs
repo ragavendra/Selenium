@@ -9,7 +9,7 @@ namespace Selenium
         {
         }
 
-        public string pageTitle => driver.Title;
+        //public string pageTitle => driver.Title;
 
         public IWebElement Inputs => driver.FindElement(By.LinkText("Inputs"));
         public IWebElement Select => driver.FindElement(By.LinkText("Select"));
