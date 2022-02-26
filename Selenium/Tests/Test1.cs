@@ -10,38 +10,39 @@ namespace Selenium
     public class Tests : TestFixture1
     {
 
-        [Test]
-        public void Test1()
+		[TestCase(TestName = "Page navigation workflow"), Order(0)]
+		public void PageNavigation()
         {
-
+			//initialize home page
 			Home home = new Home(driver);
 			home.gettingStarted.Click();
-			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
-			
+			wait();
 
+			//waitn(home.gettingStarted, home.gettingStarted);
+			//initialize Getting started page
 			GettingStarted gettingStarted = new GettingStarted(driver);
 			//Assert.IsTrue(gettingStarted.pageTitle.Contains("Getting Started"), "Invalid page title");
 			Assert.AreEqual("Getting Started - Atata", gettingStarted.pageTitle, "Invalid page title");
 
 			gettingStarted.Installation.Click();
-			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+			wait();
 
 			gettingStarted.Usage.Click();
-			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+			wait();
 
 			gettingStarted.components.Click();
-			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+			wait();
 
 			Components components = new Components(driver);
 			Assert.AreEqual("Components - Atata", components.pageTitle, "Invalid page title");
 
 			//gettingStarted.Installation.Click();
 			components.Inputs.Click();
-			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+			wait();
 
 			//gettingStarted.Usage.Click();
 			components.Select.Click();
-			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+			wait();
 
 
 			//driver.Title

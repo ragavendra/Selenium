@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace Selenium
 {
-    //[TestFixture]
-    public class TestFixture1
-    {
+	//[TestFixture]
+	public class TestFixture1
+	{
 
 		public IWebDriver driver;
 		//public ChromeOptions chromeOptions { get; set; }
@@ -35,9 +36,22 @@ namespace Selenium
 
 			//var driver = new ChromeDriver();
 			driver.Navigate().GoToUrl(Constants.appURL);
-			
-			//driver.Title; // => "Google"
-			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(Constants.timeout);
+
+			wait();
+		}
+
+		public void wait(int timeout = Constants.timeout) {
+			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(timeout);
+		}
+
+		//trying generics
+		public R waitn<R, S>(R[] arra, S[] arra1, int index) {
+			//<R> arr;
+			//arra1[0] = arra[0];
+			//arra.Click();
+			arra.Take(index).ToString();
+			arra.Skip(index).ToString();
+			return arra[0];
 		}
 
 		[TearDown]
