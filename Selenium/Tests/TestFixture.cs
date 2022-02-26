@@ -9,22 +9,35 @@ namespace Selenium
     public class TestFixture1
     {
 
-		public ChromeOptions chromeOptions { get; set; }
 		public IWebDriver driver;
+		//public ChromeOptions chromeOptions { get; set; }
 
 		[SetUp]
 		public void setup() {
 
-			chromeOptions = new ChromeOptions();
-			//chromeOptions.PageL
-			chromeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
-			driver = new ChromeDriver(chromeOptions);
+			//select and config the browser
+			switch (Constants.browser)
+			{
+				case "chrome":
+					ChromeOptions chromeOptions;
+					chromeOptions = new ChromeOptions();
+					chromeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
+					driver = new ChromeDriver(chromeOptions);
+					break;
+				case "msedge":
+					//code for MS Edge browser
+					//Console.WriteLine("Add code for MS Edge browser");
+					break;
+				case "default":
+					//code for unidentified browser
+					break;
+			}
 
 			//var driver = new ChromeDriver();
-			driver.Navigate().GoToUrl("https://atata.io");
+			driver.Navigate().GoToUrl(Constants.appURL);
 			
 			//driver.Title; // => "Google"
-			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(500);
+			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(Constants.timeout);
 		}
 
 		[TearDown]
