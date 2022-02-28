@@ -19,6 +19,8 @@ namespace Selenium
 
         public IWebElement products => driver.FindElement(By.LinkText("Products"));
 
+        public IWebElement signIn => driver.FindElement(By.LinkText("Sign In"));
+
         //interface code below
         public string str { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 

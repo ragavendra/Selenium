@@ -7,12 +7,12 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Selenium
 {
-    public class Tests : TestFixture1
-    {
+	public class Tests : TestFixture1
+	{
 
 		[TestCase(TestName = "Page navigation workflow"), Order(0)]
 		public void PageNavigation()
-        {
+		{
 			//initialize home page
 			Home home = new Home(driver);
 			home.plans.Click();
@@ -156,5 +156,89 @@ namespace Selenium
 
 			//Assert.Pass();
 		}
+
+		[TestCase(TestName = "User signs in workflow - Relative web elements"), Order(2)]
+		public void SignIn()
+		{
+			//initialize home page
+			Home home = new Home(driver);
+			home.signIn.Click();
+			wait();
+
+			//waitn(home.gettingStarted, home.gettingStarted);
+			//initialize Getting started page
+			SignIn signIn = new SignIn(driver);
+			//Assert.IsTrue(gettingStarted.pageTitle.Contains("Getting Started"), "Invalid page title");
+			Assert.AreEqual("Sign In - Atata Sample App", signIn.pageTitle, "Invalid page title");
+
+			//signIn.Email1.
+			//submitLocator
+			//emailLocator.FindElement("");
+			signIn.Email_.SendKeys("admin@mail.com");
+			//signIn.Email.SendKeys("admin@mail.com");
+
+			signIn.Password_.SendKeys("abc123");
+
+			wait();
+
+			signIn.signIn_1.Click();
+
+			wait();
+
+			Assert.AreEqual("Users - Atata Sample App", signIn.pageTitle, "Invalid page title");
+
+			Users users = new Users(driver);
+			users.New.Click();
+
+			//gettingStarted.Usage.Click();
+			//wait();
+
+			//gettingStarted.components.Click();
+			//wait();
+
+			//Products products = new Products(driver);
+			//Assert.AreEqual("Products - Atata Sample App", products.pageTitle, "Invalid page title");
+		}
+
+
+		[TestCase(TestName = "User signs in workflow"), Order(1)]
+		public void SignInRelativeElements()
+		{
+			//initialize home page
+			Home home = new Home(driver);
+			home.signIn.Click();
+			wait();
+
+			//waitn(home.gettingStarted, home.gettingStarted);
+			//initialize Getting started page
+			SignIn signIn = new SignIn(driver);
+			//Assert.IsTrue(gettingStarted.pageTitle.Contains("Getting Started"), "Invalid page title");
+			Assert.AreEqual("Sign In - Atata Sample App", signIn.pageTitle, "Invalid page title");
+
+			signIn.Email.SendKeys("admin@mail.com");
+
+			signIn.Password.SendKeys("abc123");
+
+			wait();
+
+			signIn.signIn_.Click();
+
+			wait();
+
+			Assert.AreEqual("Users - Atata Sample App", signIn.pageTitle, "Invalid page title");
+
+			Users users = new Users(driver);
+			users.New.Click();
+
+			//gettingStarted.Usage.Click();
+			//wait();
+
+			//gettingStarted.components.Click();
+			//wait();
+
+			//Products products = new Products(driver);
+			//Assert.AreEqual("Products - Atata Sample App", products.pageTitle, "Invalid page title");
+		}
+
 	}
 }
