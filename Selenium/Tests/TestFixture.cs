@@ -10,7 +10,7 @@ namespace Selenium
 	public class TestFixture1
 	{
 
-		public IWebDriver driver;
+		public IWebDriver driver { get; set; }
 		//public ChromeOptions chromeOptions { get; set; }
 
 		[SetUp]

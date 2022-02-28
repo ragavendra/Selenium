@@ -43,6 +43,15 @@ namespace Selenium
         public string address { get; set; }
         public string pin { get; set; }
         public string extra_field { get; set; }
+
+        public RegisterResponse(string first, string last, string address, string pin, string extra_field) {
+
+            fname = first;
+            lname = last;
+            this.address = address;
+            this.pin = pin;
+            this.extra_field = extra_field;
+        }
     }
 
     public class RegisterResponse2 : IResponse
@@ -52,5 +61,17 @@ namespace Selenium
         public string address { get; set; }
         public string pin { get; set; }
         public string extra_field2 { get { return extra_field2; } set { value = ""; } }
+
+        public RegisterResponse2(string first, string last, string address, string pin, string extra_field2)
+        {
+
+            fname = first;
+            lname = last;
+            this.address = address;
+            this.pin = pin;
+            this.extra_field2 = extra_field2;
+        }
+
+        //public RegisterResponse2() { }
     }
 }
