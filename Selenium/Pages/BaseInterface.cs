@@ -7,11 +7,12 @@ using OpenQA.Selenium;
 
 namespace Selenium
 {
-    interface BaseInterface
+    public interface BaseInterface<R>
     {
-
         public void setup();
+
         public string str { get; set; }
+
         public IWebDriver driver { get; set; }
 
         public string pageTitle => driver.Title;

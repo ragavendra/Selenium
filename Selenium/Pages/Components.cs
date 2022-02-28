@@ -2,7 +2,7 @@
 
 namespace Selenium
 {
-    public class Components : Base
+    public sealed class Components : Base
     {
         
         public Components(IWebDriver driver) : base(driver)
@@ -11,8 +11,9 @@ namespace Selenium
 
         //public string pageTitle => driver.Title;
 
-        public IWebElement Inputs => driver.FindElement(By.LinkText("Inputs"));
-        public IWebElement Select => driver.FindElement(By.LinkText("Select"));
+        private IWebElement Inputs => driver.FindElement(By.LinkText("Inputs"));
+
+        private IWebElement Select => driver.FindElement(By.LinkText("Select"));
         //public IWebElement LoginButton => driver.FindElement(By.CssSelector("#login"));
 
     }

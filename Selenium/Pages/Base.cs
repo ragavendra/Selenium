@@ -3,7 +3,7 @@
 
 namespace Selenium
 {
-    public abstract class Base : BaseInterface
+    public abstract class Base : BaseInterface<Base>
     {
         //public IWebDriver driver;
 

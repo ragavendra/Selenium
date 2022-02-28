@@ -2,7 +2,7 @@
 
 namespace Selenium
 {
-    public class GettingStarted : Base
+    public sealed class GettingStarted : Base
     {
 
         public GettingStarted(IWebDriver driver) : base(driver)
@@ -12,9 +12,9 @@ namespace Selenium
         //public By installation = By.LinkText("Installation");
         //public By usage = By.LinkText("Usage");
 
-        public IWebElement Installation => driver.FindElement(By.LinkText("Installation"));
+        private IWebElement Installation => driver.FindElement(By.LinkText("Installation"));
 
-        public IWebElement Usage => driver.FindElement(By.LinkText("Usage"));
+        private IWebElement Usage => driver.FindElement(By.LinkText("Usage"));
         //public IWebElement LoginButton => driver.FindElement(By.CssSelector("#login"));
 
     }
