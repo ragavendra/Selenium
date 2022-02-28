@@ -1,8 +1,7 @@
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+//using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
 namespace Selenium
@@ -230,14 +229,93 @@ namespace Selenium
 			Users users = new Users(driver);
 			users.New.Click();
 
-			//gettingStarted.Usage.Click();
-			//wait();
+		}
 
-			//gettingStarted.components.Click();
-			//wait();
 
-			//Products products = new Products(driver);
-			//Assert.AreEqual("Products - Atata Sample App", products.pageTitle, "Invalid page title");
+		[TestCase(TestName = "Select boxes workflow"), Order(3)]
+		public void SelectBoxes()
+		{
+
+			driver.Navigate().GoToUrl("https://select2.org/getting-started/basic-usage");
+
+			wait();
+
+			IWebElement selectElement = driver.FindElement(By.CssSelector("html.js.csstransforms3d body.searchbox-hidden section#body div.padding.highlightable div#body-inner select.js-states.form-control"));
+			var selectObject = new SelectElement(selectElement);
+
+			// Select an <option> based upon the <select> element's internal index
+			selectObject.SelectByIndex(1);
+
+			// Select an <option> based upon its value attribute
+			selectObject.SelectByValue("WA");
+
+			// Select an <option> based upon its text
+			selectObject.SelectByText("Vermont");
+
+			// Return a List<WebElement> of options that have been selected
+			var allSelectedOptions = selectObject.AllSelectedOptions;
+
+			// Return a WebElement referencing the first selection option found by walking down the DOM
+			//var firstSelectedOption = selectObject.AllSelectedOptions.FirstOrDefault();
+
+			// Return a IList<IWebElement> of options that the <select> element contains
+			IList<IWebElement> allAvailableOptions = selectObject.Options;
+
+			/*
+			// Deselect an <option> based upon the <select> element's internal index
+			selectObject.DeselectByIndex(1);
+
+			// Deselect an <option> based upon its value attribute
+			selectObject.DeselectByValue("WA");
+
+			// Deselect an <option> based upon its text
+			selectObject.DeselectByText("Vermont");
+
+			// Deselect all selected <option> elements
+			selectObject.DeselectAll();
+			*/
+
+			bool doesThisAllowMultipleSelections = selectObject.IsMultiple;
+		}
+
+
+		[TestCase(TestName = "Get element from elements workflow"), Order(6)]
+		public void FindElements()
+		{
+			//initialize home page
+			Home home = new Home(driver);
+			home.products.Click();
+			wait();
+
+			Products products = new Products(driver);
+			Assert.AreEqual("Products - Atata Sample App", products.pageTitle, "Invalid page title");
+			wait();
+
+			//IReadOnlyList<IWebElement> plants = driver.FindElements(By.TagName("td"));
+
+			try
+			{
+				// Navigate to Url
+				//driver.Navigate().GoToUrl("https://example.com");
+
+				// Get all the elements available with tag name 'p'
+				IList<IWebElement> elements = driver.FindElements(By.TagName("td"));
+				foreach (IWebElement e in elements)
+				{
+					System.Console.WriteLine(e.Text);
+				}
+
+			}
+			finally
+			{
+				//driver.Quit();
+
+				// Get attribute of current active element
+				string attr = driver.SwitchTo().ActiveElement().GetAttribute("title");
+
+			}
+
+
 		}
 
 	}
