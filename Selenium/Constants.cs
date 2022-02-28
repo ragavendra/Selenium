@@ -13,7 +13,7 @@ namespace Selenium
         public const string environment = "qa"; //prd stg qa
 
         //EyesOnTransit
-        public const string appURL = "https://atata.io";
+        public const string appURL = "https://demo.atata.io";
         public const int timeout = 500; //in milliseconds
 
         public const string apiKey = "apiKey";    //DEV

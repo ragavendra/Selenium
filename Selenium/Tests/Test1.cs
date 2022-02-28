@@ -15,34 +15,34 @@ namespace Selenium
         {
 			//initialize home page
 			Home home = new Home(driver);
-			home.gettingStarted.Click();
+			home.plans.Click();
 			wait();
 
 			//waitn(home.gettingStarted, home.gettingStarted);
 			//initialize Getting started page
-			GettingStarted gettingStarted = new GettingStarted(driver);
+			Plans plans = new Plans(driver);
 			//Assert.IsTrue(gettingStarted.pageTitle.Contains("Getting Started"), "Invalid page title");
-			Assert.AreEqual("Getting Started - Atata", gettingStarted.pageTitle, "Invalid page title");
+			Assert.AreEqual("Plans - Atata Sample App", plans.pageTitle, "Invalid page title");
 
-			gettingStarted.Installation.Click();
-			wait();
-
-			gettingStarted.Usage.Click();
-			wait();
-
-			gettingStarted.components.Click();
-			wait();
-
-			Components components = new Components(driver);
-			Assert.AreEqual("Components - Atata", components.pageTitle, "Invalid page title");
-
-			//gettingStarted.Installation.Click();
-			components.Inputs.Click();
+			plans.products.Click();
 			wait();
 
 			//gettingStarted.Usage.Click();
-			components.Select.Click();
-			wait();
+			//wait();
+
+			//gettingStarted.components.Click();
+			//wait();
+
+			Products products = new Products(driver);
+			Assert.AreEqual("Products - Atata Sample App", products.pageTitle, "Invalid page title");
+
+			//gettingStarted.Installation.Click();
+			//products.Inputs.Click();
+			//wait();
+
+			//gettingStarted.Usage.Click();
+			//components.Select.Click();
+			//wait();
 
 
 			//driver.Title
