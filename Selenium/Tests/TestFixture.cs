@@ -7,7 +7,7 @@ using OpenQA.Selenium.Chrome;
 namespace Selenium
 {
 	//[TestFixture]
-	public class TestFixture1
+	public class TestFixture
 	{
 
 		public IWebDriver driver { get; set; }
@@ -27,6 +27,8 @@ namespace Selenium
 					break;
 				case "msedge":
 					//code for MS Edge browser
+					//add necessary package like Selenium.Webriver.IEDriver for other browser in nuget
+					//add case for each browsers here and set default one in the Constans.cs file
 					//Console.WriteLine("Add code for MS Edge browser");
 					break;
 				case "default":
