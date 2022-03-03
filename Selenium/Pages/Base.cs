@@ -13,6 +13,9 @@ namespace Selenium
             this.driver = driver;
         }
 
+        //public string pageTitle1 = driver.Title;
+
+        //public string pageTitle() { return driver.Title; }
         public string pageTitle => driver.Title;
 
         public IWebElement plans => driver.FindElement(By.LinkText("Plans"));
@@ -29,6 +32,8 @@ namespace Selenium
         public void setup() { }
     }
 
+    //Interface usage when response can have multiple json return types
+    //onr interface can handle both the json's
     public interface IResponse {
 
         string fname { get; set; }
