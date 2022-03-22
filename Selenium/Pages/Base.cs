@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using System;
+using System.IO;
 //using SeleniumExtras.PageObjects;
 
 namespace Selenium
@@ -30,6 +32,22 @@ namespace Selenium
         public IWebDriver driver { get; set; }
 
         public void setup() { }
+
+        public void TakeScreen(string testName) {
+
+            //create dir in root of project folder with test name
+            string path = "../../../../RunLog/" + testName;
+            DirectoryInfo di = new DirectoryInfo(path);
+
+            if (di.Exists)
+            { }
+            else
+                di.Create();
+
+            ITakesScreenshot takesScreenshot = driver as ITakesScreenshot;
+			Screenshot screenshot = takesScreenshot.GetScreenshot();
+			screenshot.SaveAsFile(path + "/Step_" + DateTime.Now.ToString("ddMMyyy_hhmmss") + ".png");
+        }
     }
 
     //Interface usage when response can have multiple json return types

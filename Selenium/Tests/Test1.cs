@@ -26,6 +26,9 @@ namespace Selenium
 			//Assert.IsTrue(gettingStarted.pageTitle.Contains("Getting Started"), "Invalid page title");
 			Assert.AreEqual("Plans - Atata Sample App", plans.pageTitle, "Invalid page title");
 
+			//take screen
+			plans.TakeScreen(TestContext.CurrentContext.Test.Name);
+
 			plans.products.Click();
 			wait();
 
