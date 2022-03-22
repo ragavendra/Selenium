@@ -1,8 +1,11 @@
+using System;
+using System.Text;
 using NUnit.Framework;
 using System.Collections.Generic;
 using OpenQA.Selenium;
 //using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using System.Collections;
 
 namespace Selenium
 {
@@ -162,8 +165,6 @@ namespace Selenium
 
 			try
 			{
-				// Navigate to Url
-				//driver.Navigate().GoToUrl("https://example.com");
 
 				// Get all the elements available with tag name 'p'
 				IList<IWebElement> elements = driver.FindElements(By.TagName("td"));
@@ -183,7 +184,137 @@ namespace Selenium
 			}
 		}
 
+		[TestCase(TestName = "Learning Extension methods and immutable types"), Order(7)]
+		public static void immutable()
+		{
+			string s = "Hello Extension Methods";
 
+			//extension method for string
+			int inte = s.WordCount(); //from class Extension in Attribute.cs file
+
+			int p = s.AasInString();
+
+			int aaa = 300;
+			//aaa.square
+			int q = aaa.DecimalCount();
+
+			q = aaa.square();
+
+			Console.WriteLine(q);
+
+			//string type is immutable meaning every value assignment
+			// to it creates in new memory increasing garbage collection
+			string test = "this is sample str";
+
+			//can freeze VS
+			for (int i = 0; i < 10; i++)
+				test = test + test;
+
+			//we can use StringBuilder class in Sys...Text instead of string
+			// which is mutable and uses the same memo for string updates
+			StringBuilder sample = new StringBuilder();
+			//sample = "hi";
+			sample.Append("hi");
+
+
+			//can freeze VS
+			for (int i = 0; i < 10; i++)
+				sample.Append(sample);
+
+			//sample mutable var
+			Mutable test1 = new Mutable("test");
+			string yes = test1.getStr;
+
+			//nested class
+			Extension.subclass.sublass2 sub2 = new Extension.subclass.sublass2();
+			sub2.var1 = 3;
+
+		}
+
+		/*
+		[TestCase(TestName = "Page navigation workflow zero"), Order(8)]
+		public void PageNavigation0()
+		{
+
+			OomaLogin login = new OomaLogin(driver);
+			login.username.SendKeys("15043008172");
+			login.password.SendKeys("password1");
+
+			login.loginButton.Click();
+
+			Hashtable extName = new Hashtable();
+
+			OomaExtensions ext = new OomaExtensions(driver);
+			try
+			{
+				for (int row = 0; row < 10; row++) {
+					for (int col = 0; col < 2; col++)
+					{
+						extName.Add(ext.extension(row.ToString(), col.ToString()).GetProperty("text"), ext.name(row.ToString(), col.ToString()).GetProperty("text"));
+						//extName.Add()
+						extName.Add("name1", 10);
+					}
+				}
+			}
+			catch { 
+			}
+
+			//HashSet abc = new HashSet();
+			//List<string> list = new List<string>();
+			//list.Add
+
+			//Hashtable sample = new Hashtable();
+			//Directory 
+			//sample.Add();
+
+		}
+*/
+		/*
+		 * 
+		 * Write a function which:
+- prints names of all people who has age 30 
+- count of people who is younger than 30 
+- count of people who is older than 30 
+Ex.: {"Anna" => 18, "Brian" => 45, "Megan" => 30, "John" => 31, "Mary" => 30, "Sam" => 7, "Angel" => 50)
+		 * */
+/*
+		[TestCase(TestName = "30 and greater"), Order(0)]
+		public void PageNavigation1()
+		{
+			Hashtable nameNumber = new Hashtable();
+			nameNumber.Add("Anna", 18);
+			nameNumber.Add("Brian", 45);
+			nameNumber.Add("Megan", 30);
+			nameNumber.Add("John", 31);
+			nameNumber.Add("Mary", 30);
+			nameNumber.Add("Sam", 7);
+			nameNumber.Add("Angel", 50);
+
+			nameNumber.ContainsValue(3);
+
+			int greater = 0;
+			int lesser = 0;
+
+			foreach (DictionaryEntry de in nameNumber)
+			{
+
+				int a = int.Parse(de.Value.ToString());
+
+				if (a > 30)
+					greater++;
+				else if (a < 30)
+					lesser++;
+				else if (a == 30)
+					Console.WriteLine(de.Key + " is 30");
+				
+			}
+
+			Console.WriteLine("No of people above 30 " + greater);
+			Console.WriteLine("No of people less than 30 " + lesser);
+
+		}
+
+*/
 
 
 

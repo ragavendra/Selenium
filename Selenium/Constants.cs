@@ -10,9 +10,9 @@ namespace Selenium
     public struct Constants
     {
         public const string browser = "chrome"; //set default browser here - chrome, msedge, firefox
+        public const bool headless = true; //set true to run in headless mode
         public const string environment = "qa"; //prd stg qa
 
-        //EyesOnTransit
         public const string appURL = "https://demo.atata.io";
         public const int timeout = 500; //in milliseconds
 

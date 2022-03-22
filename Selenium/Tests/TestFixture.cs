@@ -23,6 +23,12 @@ namespace Selenium
 					ChromeOptions chromeOptions;
 					chromeOptions = new ChromeOptions();
 					chromeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
+
+					//for headless
+					if (Constants.headless)
+						chromeOptions.AddArgument("--headless");
+					//chromeCapabilities.set('chromeOptions', {args: ['--headless']});
+
 					driver = new ChromeDriver(chromeOptions);
 					break;
 				case "msedge":

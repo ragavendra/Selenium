@@ -99,10 +99,67 @@ namespace Selenium
             public Nested(Container parent)
             {
                 this.parent = parent;
+                var par = new Object[] { 1, "this is me" }; //anonymous types
+                var ls = par[0];
             }
         }
 
         //Container.Nested nest = new Container.Nested();
     }
+
+    public static class Extension {
+
+        //extension method for string data type
+        public static int WordCount(this string str){
+            return str.Split(new char[] { ' ', '.', '?' }, StringSplitOptions.RemoveEmptyEntries).Length;
+        }
+
+        public static int AasInString(this string str) {    //some dummy method
+            return str.Length;
+        }
+
+        public static int DecimalCount(this int no) {    //some dummy method
+            return no / 100;
+        }
+
+        public static int square(this int no) {    //some dummy method
+            return no * no;
+        }
+
+        public class subclass {
+
+            public string vari { get; set; }
+            public subclass() { }
+
+            public class sublass2 { 
+
+                public int var1 { get; set; }
+            }
+        
+        }
+    }
+
+    public class Mutable
+    {
+        readonly string str;
+
+        public Mutable(string str)
+        {
+            this.str = str;
+        }
+
+        public string getStr { 
+            get { return str; } 
+        }
+
+        //OR
+
+        public string GetStr1() {
+            return str;
+        }
+
+        public string getStr2 => str;
+    }
+
 
 }

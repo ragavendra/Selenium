@@ -13,6 +13,7 @@ namespace Selenium
 
         //making it more obvious to find the element
         public IWebElement Email_ => driver.FindElement(RelativeBy.WithLocator(By.Id("email")).Above(By.Id("password")));
+        //public IWebElement Email_() { return driver.FindElement(RelativeBy.WithLocator(By.Id("email")).Above(By.Id("password"))); }
 
         public IWebElement Email => driver.FindElement(By.Id("email"));
 
