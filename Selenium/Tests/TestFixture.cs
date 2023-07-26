@@ -24,17 +24,20 @@ namespace Selenium
             switch (Constants.browser)
             {
                 case "chrome":
-                    ChromeOptions chromeOptions;
-                    chromeOptions = new ChromeOptions();
-                    chromeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
+                    {
+                        ChromeOptions chromeOptions;
+                        chromeOptions = new ChromeOptions();
+                        chromeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
 
-                    //for headless
-                    if (Constants.headless)
-                        chromeOptions.AddArgument("--headless");
-                    //chromeCapabilities.set('chromeOptions', {args: ['--headless']});
+                        //for headless
+                        if (Constants.headless)
+                            chromeOptions.AddArgument("--headless");
+                        //chromeCapabilities.set('chromeOptions', {args: ['--headless']});
 
-                    _driver = new ChromeDriver(chromeOptions);
-                    break;
+                        _driver = new ChromeDriver(chromeOptions);
+                        break;
+                    }
+
                 case "msedge":
                     //code for MS Edge browser
                     //add necessary package like Selenium.Webriver.IEDriver for other browser in nuget

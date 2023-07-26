@@ -24,7 +24,8 @@ namespace Selenium
 
         public IWebElement products => _driver.FindElement(By.LinkText("Products"));
 
-        public IWebElement signIn => _driver.FindElement(By.LinkText("Sign In"));
+        // public IWebElement signIn => _driver.FindElement(By.LinkText("Sign In"));
+        public IWebElement signIn => _driver.FindElement(RelativeBy.WithLocator(By.LinkText("Sign In")).LeftOf(By.LinkText("Sign Up")));
 
         protected IWebDriver _driver;
 

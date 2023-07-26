@@ -166,6 +166,14 @@ namespace Selenium
             hardWait();
 
             Products products = new Products(Driver);
+
+            //fluent wait
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(3)) { PollingInterval = TimeSpan.FromSeconds(1) };
+
+            // ignore this excpn
+            wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+            wait.Until(Driver => Driver.FindElement(By.ClassName("page-header")));
+
             Assert.AreEqual("Products - Atata Sample App", products.pageTitle, "Invalid page title");
             hardWait();
 
@@ -182,13 +190,16 @@ namespace Selenium
                 }
 
             }
+			catch(Exception exception)
+			{
+				Console.WriteLine("Issue finding elements " + exception.Message);
+			}
             finally
             {
                 //Driver.Quit();
 
                 // Get attribute of current active element
                 string attr = Driver.SwitchTo().ActiveElement().GetAttribute("title");
-
             }
         }
 
