@@ -3,7 +3,7 @@
 
 namespace Selenium
 {
-    public class Select : Base
+    public class Select : Base<Select>
     {
 
         public By searchBox = By.Name("q");

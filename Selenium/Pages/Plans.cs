@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Selenium
 {
-    public sealed class Plans : Base
+    public sealed class Plans : Base<Plans>
     {
         
         public Plans(IWebDriver driver) : base(driver)

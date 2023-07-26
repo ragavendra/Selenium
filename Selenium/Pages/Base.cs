@@ -1,82 +1,54 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 //using SeleniumExtras.PageObjects;
 
 namespace Selenium
 {
-    public abstract class Base : BaseInterface<Base>
+    public abstract class Base<T> : BaseInterface<T>
     {
-        //public IWebDriver driver;
+        //public IWeb_driver _driver;
 
         //menus go on this class
         private protected Base(IWebDriver driver)
         {
-            this.driver = driver;
+            _driver = driver;
         }
 
-        //public string pageTitle1 = driver.Title;
+        //public string pageTitle1 = _driver.Title;
 
-        //public string pageTitle() { return driver.Title; }
-        public string pageTitle => driver.Title;
+        //public string pageTitle() { return _driver.Title; }
+        public string pageTitle => _driver.Title;
 
-        public IWebElement plans => driver.FindElement(By.LinkText("Plans"));
+        public IWebElement plans => _driver.FindElement(By.LinkText("Plans"));
 
-        public IWebElement products => driver.FindElement(By.LinkText("Products"));
+        public IWebElement products => _driver.FindElement(By.LinkText("Products"));
 
-        public IWebElement signIn => driver.FindElement(By.LinkText("Sign In"));
+        public IWebElement signIn => _driver.FindElement(By.LinkText("Sign In"));
 
-        //interface code below
-        public string str { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        protected IWebDriver _driver;
 
-        public IWebDriver driver { get; set; }
+        public IWebDriver Driver { get; set; }
 
-        public void setup() { }
-    }
-
-    //Interface usage when response can have multiple json return types
-    //onr interface can handle both the json's
-    public interface IResponse {
-
-        string fname { get; set; }
-        string lname { get; set; }
-        string address { get; set; }
-        string pin { get; set; }
-    }
-
-    public class RegisterResponse : IResponse {
-        public string fname { get; set; }
-        public string lname { get; set; }
-        public string address { get; set; }
-        public string pin { get; set; }
-        public string extra_field { get; set; }
-
-        public RegisterResponse(string first, string last, string address, string pin, string extra_field) {
-
-            fname = first;
-            lname = last;
-            this.address = address;
-            this.pin = pin;
-            this.extra_field = extra_field;
-        }
-    }
-
-    public class RegisterResponse2 : IResponse
-    {
-        public string fname { get; set; }
-        public string lname { get; set; }
-        public string address { get; set; }
-        public string pin { get; set; }
-        public string extra_field2 { get { return extra_field2; } set { value = ""; } }
-
-        public RegisterResponse2(string first, string last, string address, string pin, string extra_field2)
+        public bool CheckIfAllElementsIsLoaded()
         {
+            try
+            {
+                var properties = GetType().GetProperties();
 
-            fname = first;
-            lname = last;
-            this.address = address;
-            this.pin = pin;
-            this.extra_field2 = extra_field2;
+                foreach (var item in properties)
+                {
+                    var val = item.GetValue(this);
+                }
+
+                return true;
+
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Issue loading element info " + exception.Message);
+            }
+
+            return false;
         }
-
-        //public RegisterResponse2() { }
     }
 }

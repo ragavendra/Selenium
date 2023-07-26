@@ -9,12 +9,6 @@ namespace Selenium
 {
     public interface BaseInterface<R>
     {
-        public void setup();
-
-        public string str { get; set; }
-
-        public IWebDriver driver { get; set; }
-
-        public string pageTitle => driver.Title;
+        // public string pageTitle => Driver.Title;
     }
 }

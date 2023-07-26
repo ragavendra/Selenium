@@ -1,72 +1,80 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace Selenium
 {
-	//[TestFixture]
-	public class TestFixture
-	{
+    //[TestFixture]
+    public class TestFixture
+    {
 
-		public IWebDriver driver { get; set; }
-		//public ChromeOptions chromeOptions { get; set; }
+        private IWebDriver _driver;
+        //public ChromeOptions chromeOptions { get; set; }
 
-		[SetUp]
-		public void setup() {
+        public IWebDriver Driver { get => _driver; set => _driver = value; }
 
-			//select and config the browser
-			switch (Constants.browser)
-			{
-				case "chrome":
-					ChromeOptions chromeOptions;
-					chromeOptions = new ChromeOptions();
-					chromeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
+        [SetUp]
+        public void setup()
+        {
 
-					//for headless
-					if (Constants.headless)
-						chromeOptions.AddArgument("--headless");
-					//chromeCapabilities.set('chromeOptions', {args: ['--headless']});
+            //select and config the browser
+            switch (Constants.browser)
+            {
+                case "chrome":
+                    ChromeOptions chromeOptions;
+                    chromeOptions = new ChromeOptions();
+                    chromeOptions.PageLoadStrategy = PageLoadStrategy.Normal;
 
-					driver = new ChromeDriver(chromeOptions);
-					break;
-				case "msedge":
-					//code for MS Edge browser
-					//add necessary package like Selenium.Webriver.IEDriver for other browser in nuget
-					//add case for each browsers here and set default one in the Constans.cs file
-					//Console.WriteLine("Add code for MS Edge browser");
-					break;
-				case "default":
-					//code for unidentified browser
-					break;
-			}
+                    //for headless
+                    if (Constants.headless)
+                        chromeOptions.AddArgument("--headless");
+                    //chromeCapabilities.set('chromeOptions', {args: ['--headless']});
 
-			//var driver = new ChromeDriver();
-			driver.Navigate().GoToUrl(Constants.appURL);
+                    _driver = new ChromeDriver(chromeOptions);
+                    break;
+                case "msedge":
+                    //code for MS Edge browser
+                    //add necessary package like Selenium.Webriver.IEDriver for other browser in nuget
+                    //add case for each browsers here and set default one in the Constans.cs file
+                    //Console.WriteLine("Add code for MS Edge browser");
+                    break;
+                case "default":
+                    //code for unidentified browser
+                    break;
+            }
 
-			wait();
-		}
+            //var driver = new ChromeDriver();
+            _driver.Navigate().GoToUrl(Constants.appURL);
 
-		public void wait(int timeout = Constants.timeout) {
-			driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(timeout);
-		}
+            wait();
+        }
 
-		//trying generics
-		public R waitn<R, S>(R[] arra, S[] arra1, int index) {
-			//<R> arr;
-			//arra1[0] = arra[0];
-			//arra.Click();
-			arra.Take(index).ToString();
-			arra.Skip(index).ToString();
-			return arra[0];
-		}
+        public void wait(int timeout = Constants.timeout)
+        {
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(timeout);
+            Thread.Sleep(timeout);
+        }
 
-		[TearDown]
-		public void tear() {
+        //trying generics
+        public R waitn<R, S>(R[] arra, S[] arra1, int index)
+        {
+            //<R> arr;
+            //arra1[0] = arra[0];
+            //arra.Click();
+            arra.Take(index).ToString();
+            arra.Skip(index).ToString();
+            return arra[0];
+        }
+
+        [TearDown]
+        public void tear()
+        {
 
             //DriverCommand.		
-            driver.Quit();
+            _driver.Quit();
         }
 
     }

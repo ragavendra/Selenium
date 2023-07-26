@@ -2,7 +2,7 @@
 
 namespace Selenium
 {
-    public sealed class Products : Base
+    public sealed class Products : Base<Products>
     {
         
         public Products(IWebDriver driver) : base(driver)
