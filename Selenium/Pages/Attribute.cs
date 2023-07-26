@@ -107,7 +107,7 @@ namespace Selenium
         //Container.Nested nest = new Container.Nested();
     }
 
-    public static class Extension {
+    public static class Extensions {
 
         //extension method for string data type
         public static int WordCount(this string str){
@@ -123,6 +123,11 @@ namespace Selenium
         }
 
         public static int square(this int no) {    //some dummy method
+            return no * no;
+        }
+
+        public static long sqr(this long no)
+        {
             return no * no;
         }
 

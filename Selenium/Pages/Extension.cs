@@ -24,6 +24,9 @@ using Selenium;
 
             q = aaa.square();
 
+            long lon = 11111;
+            lon.sqr();
+
             Console.WriteLine(q);
 
             //string type is immutable meaning every value assignment
