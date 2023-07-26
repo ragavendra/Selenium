@@ -49,13 +49,19 @@ namespace Selenium
             //var driver = new ChromeDriver();
             _driver.Navigate().GoToUrl(Constants.appURL);
 
-            wait();
+            hardWait();
         }
 
-        public void wait(int timeout = Constants.timeout)
+        public void hardWait(int timeout = Constants.timeout)
+        {
+            // _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(timeout);
+            Thread.Sleep(timeout);
+        }
+
+        //the default time the driver waits when trying to find each element 
+        public void setImplicitWait(int timeout = Constants.timeout)
         {
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(timeout);
-            Thread.Sleep(timeout);
         }
 
         //trying generics

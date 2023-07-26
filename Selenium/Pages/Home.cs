@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 //using SeleniumExtras.PageObjects;
 
 namespace Selenium
@@ -7,6 +8,7 @@ namespace Selenium
     {
 
         public By searchBox = By.Name("q");
+
         public By searchButton = By.Name("btnK");
         
         public Home(IWebDriver driver) : base(driver)

@@ -4,9 +4,10 @@ using OpenQA.Selenium;
 
 namespace Selenium
 {
-    public abstract class Base<T> : BaseInterface<T>
+    public abstract class Base<T> : BaseInterface<T>, IDisposable
     {
         //public IWeb_driver _driver;
+        private bool _disposed;
 
         //menus go on this class
         private protected Base(IWebDriver driver)
@@ -50,5 +51,20 @@ namespace Selenium
 
             return false;
         }
+
+        public void Dispose()
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            GC.SuppressFinalize(this);
+            _disposed = true;
+
+            Console.WriteLine(GetType().Name + "Dispose is called now!");
+
+        }
+
     }
 }

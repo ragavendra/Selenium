@@ -19,7 +19,7 @@ namespace Selenium
             //initialize home page
             Home home = new Home(Driver);
             home.plans.Click();
-            wait();
+            hardWait();
 
             //waitn(home.gettingStarted, home.gettingStarted);
             //initialize Getting started page
@@ -28,7 +28,7 @@ namespace Selenium
             Assert.AreEqual("Plans - Atata Sample App", plans.pageTitle, "Invalid page title");
 
             plans.products.Click();
-            wait();
+            hardWait();
 
             Products products = new Products(Driver);
             Assert.AreEqual("Products - Atata Sample App", products.pageTitle, "Invalid page title");
@@ -39,10 +39,13 @@ namespace Selenium
         [Order(1)]
         public void SignIn()
         {
+			Console.WriteLine("Starting test now!");
+
             //initialize home page
-            Home home = new Home(Driver);
+            using Home home = new Home(Driver);
             home.signIn.Click();
-            wait();
+
+            hardWait();
 
             //waitn(home.gettingStarted, home.gettingStarted);
             //initialize Getting started page
@@ -54,11 +57,11 @@ namespace Selenium
 
             signIn.Password.SendKeys("abc123");
 
-            wait();
+            hardWait();
 
             signIn.signIn_.Click();
 
-            wait();
+            hardWait();
 
             Assert.AreEqual("Users - Atata Sample App", signIn.pageTitle, "Invalid page title");
 
@@ -74,7 +77,7 @@ namespace Selenium
             //initialize home page
             Home home = new Home(Driver);
             home.signIn.Click();
-            wait();
+            hardWait();
 
             //waitn(home.gettingStarted, home.gettingStarted);
             //initialize Getting started page
@@ -90,11 +93,11 @@ namespace Selenium
 
             signIn.Password_.SendKeys("abc123");
 
-            wait();
+            hardWait();
 
             signIn.signIn_1.Click();
 
-            wait();
+            hardWait();
 
             Assert.AreEqual("Users - Atata Sample App", signIn.pageTitle, "Invalid page title");
 
@@ -110,7 +113,7 @@ namespace Selenium
 
             Driver.Navigate().GoToUrl("https://select2.org/getting-started/basic-usage");
 
-            wait();
+            hardWait();
 
             IWebElement selectElement = Driver.FindElement(By.CssSelector("html.js.csstransforms3d body.searchbox-hidden section#body div.padding.highlightable div#body-inner select.js-states.form-control"));
             var selectObject = new SelectElement(selectElement);
@@ -160,11 +163,11 @@ namespace Selenium
             //initialize home page
             Home home = new Home(Driver);
             home.products.Click();
-            wait();
+            hardWait();
 
             Products products = new Products(Driver);
             Assert.AreEqual("Products - Atata Sample App", products.pageTitle, "Invalid page title");
-            wait();
+            hardWait();
 
             //IReadOnlyList<IWebElement> plants = Driver.FindElements(By.TagName("td"));
 
