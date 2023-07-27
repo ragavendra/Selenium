@@ -55,17 +55,24 @@ namespace Selenium
 
         public void Dispose()
         {
-            if (_disposed)
-            {
-                return;
-            }
-
+            Dispose(true);
             GC.SuppressFinalize(this);
-            _disposed = true;
-
-            Console.WriteLine(GetType().Name + "Dispose is called now!");
-
         }
 
+        private void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if(disposing)
+                {
+                    _driver = null;
+                }
+                // return;
+            }
+
+            // todo: disp unmnaged resources
+            _disposed = true;
+            Console.WriteLine(GetType().Name + "Dispose is called now!");
+        }
     }
 }
